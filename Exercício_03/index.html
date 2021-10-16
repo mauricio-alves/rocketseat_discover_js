@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celsius em fahrenheit</title>
+</head>
+
+<body>
+  <script>
+
+    function conversionDegree(degree) {
+      const celsius = degree.toUpperCase().includes("C");
+      const fahrenheit = degree.toUpperCase().includes("F");
+
+      //fluxo de erro
+      if (!celsius && !fahrenheit) {
+        throw new Error("Grau não identificado");
+      }
+
+      //fluxo F -> C
+      let updatedDegree = Number(degree.toUpperCase().replace("F", ""));
+      let formula = (fahrenheit) => ((fahrenheit - 32) * 5 / 9).toFixed(1);
+      let degreeSign = "C";
+
+      //fluxo C -> F
+      if(celsius) {
+        updatedDegree = Number(degree.toUpperCase().replace("C", ""));
+        formula = (celsius) => (celsius * 9 / 5 + 32).toFixed(1);
+        degreeSign = "F";
+      }
+
+      return formula(updatedDegree) + degreeSign;
+    }
+
+    try {
+      console.log(conversionDegree("10C"));
+      console.log(conversionDegree("50F"));
+      conversionDegree("32Z");
+    } catch (error) {
+      console.log(error.message);
+    }
+
+  </script>
+</body>
+</html>

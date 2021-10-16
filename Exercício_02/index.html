@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de gastos familiar</title>
+</head>
+
+<body>
+  <script>
+
+    let orcamento = {
+      receitas: [150, 456, 396],
+      despesas: [89, 367, 256]
+    }
+
+    function soma(array) {
+      let total = 0;
+
+      for (let value of array) {
+        total += value;
+      }
+
+      return total;
+    }
+
+    function calcularOrcamento() {
+      const calcularReceitas = soma(orcamento.receitas);
+      const calcularDespesas = soma(orcamento.despesas);
+
+      const total = calcularReceitas - calcularDespesas;
+
+      let message = "Seu saldo foi ";
+
+      if (total > 0) {
+        message = message + "positivo: R$" + total;
+      } else {
+        message = message + "negativo: R$" + total;
+      }
+
+      console.log(message);
+    }
+
+    calcularOrcamento();
+  </script>
+</body>
+</html>
